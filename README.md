@@ -38,14 +38,14 @@
 
 Следующая точка доступа **/api/v1/metrics** предоставляет метрики в формате <a href="https://habr.com/ru/articles/554274/#json_object">**JSON**</a>.
 
-Пример метрик в формате JSON:
+Пример метрик в формате JSON:<br>
 ![Metrics JSON](./pics/metrics_json.png)
 
 ## Метрики в формате Prometheus <a name="metrics-prometheus"></a>
 
 Следующая точка доступа **/api/v1/metrics** предоставляет метрики в формате <a href="https://habr.com/ru/articles/554274/#json_object">**JSON**</a>.
 
-Пример метрик в формате <a href="https://prometheus.io/docs/instrumenting/exposition_formats/">Prometheus</a>:
+Пример метрик в формате <a href="https://prometheus.io/docs/instrumenting/exposition_formats/">Prometheus</a>:<br>
 ![Metrics Prometheus](./pics/metrics_prometheus.png)
 
 ## Глоссарий
