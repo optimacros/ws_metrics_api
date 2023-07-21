@@ -15,7 +15,7 @@
   - [**workspace_memory_allowance**](#metrics_workspace_memory_allowance) - максимальный размер занятой памяти
   - [**workspace_memory_total**](#metrics_workspace_memory_total) - размер общедоступной памяти
   - [**workspace_users_total**](#metrics_workspace_users_total) - количество всех пользователей
-  - [**workspace_users_active**](#metrics_workspace_users_active) - количество активных (залогиненных) пользователей
+  - [**workspace_users_active**](#metrics_workspace_users_active) - количество залогиненных и активных пользователей
   - [**workspace_users_modeler**](#metrics_workspace_users_modeler) - количество пользователей-моделеров
   - [**workspace_users_non_modeler**](#metrics_workspace_users_non_modeler) - количество обычных пользователей
   - [**workspace_backups_count**](#metrics_workspace_backups_count) - количество созданных бэкапов
