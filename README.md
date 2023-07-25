@@ -21,7 +21,7 @@
   - [**workspace_backups_count**](#metrics_workspace_backups_count) - количество созданных бэкапов
   - [**workspace_backups_size**](#metrics_workspace_backups_size) - размер созданных бэкапов
   - [**workspace_backups_size_limit**](#metrics_workspace_backups_size_limit) - лимит пространства для бэкапов
-  - [**workspace_backups_tasks_failed**](#metrics_workspace_backups_tasks_failed) - количество провальных задач бекапирования в системе
+  - [**workspace_backups_tasks_failed**](#metrics_workspace_backups_tasks_failed) - количество провальных задач бэкапирования в системе
 - модели (models)
   - [**models_counter_total**](#metrics_models_counter_total) - общее количество моделей в системе
   - [**models_counter_online**](#metrics_models_counter_online) - количество доступных моделей (online)
