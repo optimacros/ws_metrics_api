@@ -7,3 +7,4 @@ include:
       - '/common/variables.yml'
       - '/common/workflow.yml'
       - '/pipelines/text_checkers.yml'
+      - '/.hunspell_ignore_word_list.txt'
