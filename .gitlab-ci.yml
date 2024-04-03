@@ -1,0 +1,6 @@
+include:
+  - 'gitlab-ci/common/stages.yml'
+  - 'gitlab-ci/common/templates.yml'
+  - 'gitlab-ci/common/variables.yml'
+  - 'gitlab-ci/common/workflow.yml'
+  - 'gitlab-ci/pipelines/text_checkers.yml'
