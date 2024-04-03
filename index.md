@@ -1,12 +1,14 @@
-#  Документация по сервису метрик Optimacros
+# Документация по сервису метрик Optimacros
 
 ИС Optimacros предоставляет доступ к сервису метрик основных параметров приложения по протоколу HTTP (для использования в системах Prometheus, Zabbix и т.п.).
 
 Сервис метрик доступен по следующим точкам доступа:
-- **/api/v1/metrics** (предоставляет метрики в формате [**JSON**](#metrics-json))
+
+- **/api/v1/metrics** (предоставляет метрики в формате [**JSON**](#метрики-в-формате-json))
 - **/api/v1/metrics/prometheus** (предоставляет метрики в формате [**Prometheus**](#metrics-prometheus))
 
 Основные метрики приложения:
+
 - системные (system)
   - [**system_cpu_load**](#metrics_system_cpu_load) - степень загруженности процессора в процентах от 0 до 100
   - [**system_memory_used**](#metrics_system_memory_used) - размер использованной памяти
@@ -34,7 +36,7 @@
   - [**requests_history_time_average**](#metrics_requests_history_time_average) - среднее время выполнения запросов
   - [**requests_history_time_median**](#metrics_requests_history_time_median) - медиана времени выполнения запросов
 
-## Метрики в формате JSON <a name="metrics-json"></a>
+## Метрики в формате JSON
 
 Точка доступа **/api/v1/metrics** предоставляет метрики в формате <a href="https://habr.com/ru/articles/554274/#json_object">**JSON**</a>.
 <br>Чтобы получить данные, нужно отправить GET запрос по данному адресу Воркспейса.
