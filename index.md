@@ -40,7 +40,7 @@
 <br>Чтобы получить данные, нужно отправить GET запрос по данному адресу Воркспейса.
 
 Пример метрик в формате JSON:<br>
-![Metrics JSON](./pics/metrics_json.png)
+![Metrics JSON](./assets/metrics_json.png)
 
 ## Метрики в формате Prometheus <a name="metrics-prometheus"></a>
 
@@ -48,7 +48,7 @@
 <br>Чтобы получить данные, нужно отправить GET запрос по данному адресу Воркспейса.
 
 Пример метрик в формате Prometheus:<br>
-![Metrics Prometheus](./pics/metrics_prometheus.png)
+![Metrics Prometheus](./assets/metrics_prometheus.png)
 
 ## Детали метрик
 
@@ -71,7 +71,7 @@
 Данная метрика предоставляет информацию об использованной оперативной памяти на компьютере, где работает воркспейс. Т.е. отображает размер оперативной памяти, занимаемый всеми моделями, хранящимися на воркспейсе.
 <br>Метрика представлена целым числом и показывает размер использованной памяти в байтах.
 <br>Данная картинка показывает пример использованной оперативной памяти и связанные метрики:
-<br>![Workspace Memory](./pics/workspace_memory.png)
+<br>![Workspace Memory](./assets/workspace_memory.png)
 
 #### workspace_memory_allowance <a name="metrics_workspace_memory_allowance"></a>
 
