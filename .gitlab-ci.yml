@@ -1,6 +1,6 @@
 include:
   - project: 'mw/docs/gitlab-ci'
-    ref: 708b4f983b3a6aeb0a3e3a3d6d49501b3196b57f                                      
+    ref: 6a57fd1032924f5fc83abfc0dbab6ac02f3a0bf0                                      
     file:
       - '/common/stages.yml'
       - '/common/templates.yml'
