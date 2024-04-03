@@ -1,5 +1,5 @@
 include:
-  - project: 'mw/docs'
+  - project: 'mw/docs/docs'
     ref: main                                      
     file:
       - '/gitlab-ci/common/stages.yml'
