@@ -1,0 +1,9 @@
+include:
+  - project: 'mw/docs/gitlab-ci'
+    ref: 6a57fd1032924f5fc83abfc0dbab6ac02f3a0bf0                                      
+    file:
+      - '/common/stages.yml'
+      - '/common/templates.yml'
+      - '/common/variables.yml'
+      - '/common/workflow.yml'
+      - '/pipelines/text_checkers.yml'

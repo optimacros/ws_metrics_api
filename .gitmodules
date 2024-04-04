@@ -1,0 +1,4 @@
+[submodule "gitlab-ci"]
+	path = gitlab-ci
+	url = git@mw-gitlab.optimacros.com:mw/docs/gitlab-ci.git
+	branch = main
