@@ -2,3 +2,7 @@
 	path = gitlab-ci
 	url = git@mw-gitlab.optimacros.com:mw/docs/gitlab-ci.git
 	branch = main
+[submodule "rules"]
+	path = rules
+	url = git@mw-gitlab.optimacros.com:mw/docs/rules.git
+	branch = main
