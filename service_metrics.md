@@ -24,10 +24,16 @@
   - [**workspace_backups_size**](#workspace_backups_size) - размер созданных бэкапов
   - [**workspace_backups_size_limit**](#workspace_backups_size_limit) - лимит пространства для бэкапов
   - [**workspace_backups_tasks_failed**](#workspace_backups_tasks_failed) - количество провальных задач бэкапирования в системе
-- модели (models)
-  - [**models_counter_total**](#models_counter_total) - общее количество моделей в системе
+- все модели (models)
   - [**models_counter_online**](#models_counter_online) - количество доступных моделей (online)
   - [**models_counter_offline**](#models_counter_offline) - количество недоступных моделей (offline)
+- одиночные модели(model)
+  - [**model_uid_id**](#model_uid_id) - id модели
+  - [**model_uid_name**](#model_uid_name) - имя модели
+  - [**model_uid_status**](#model_uid_status) - статус модели
+  - [**model_uid_memory**](#model_uid_memory) - затраченная память модели
+  - [**model_uid_serial_global**](#model_uid_serial_global) - глобальный серийный номер модели
+  - [**model_uid_serial_meta**](#model_uid_serial_meta) - мета серийный номер модели
 - запросы (requests)
   - [**requests_number**](#requests_number) - количество запросов (мгновенное значение (RPS))
   - [**requests_history_number**](#requests_history_number) - общее количество запросов (по истории)
@@ -41,17 +47,101 @@
 Точка доступа **/api/v1/metrics** предоставляет метрики в формате [**JSON**](https://habr.com/ru/articles/554274/#json_object).  
 Чтобы получить данные, нужно отправить GET запрос по данному адресу Воркспейса.
 
+Пример метрик в формате JSON ввиде изображений:  
+
+[Пример №1](./assets/metrics_json_2.png)
+[Пример №2](./assets/metrics_json_1.png)
+
 Пример метрик в формате JSON:  
-![Metrics JSON](./assets/metrics_json.png)
+
+```plaintext
+{
+"model_26dcabf5dd07007371ce2a649024d03d_id": 276,
+"model_26dcabf5dd07007371ce2a649024d03d_memory": 0,
+"model_26dcabf5dd07007371ce2a649024d03d_name": "subset_filter",
+"model_26dcabf5dd07007371ce2a649024d03d_serial_global": 0,
+"model_26dcabf5dd07007371ce2a649024d03d_serial_meta": 0,
+"model_26dcabf5dd07007371ce2a649024d03d_status": 1,
+"models_counter_offline": 0,
+"models_counter_online": 4,
+"models_counter_total": 4,
+"requests_history_number": 0,
+"requests_history_time_average": 0,
+"requests_history_time_maximum": 0,
+"requests_history_time_median": 0,
+"requests_history_time_minimum": 0,
+"requests_number": 1,
+"system_cpu_load": 10,
+"system_memory_used": 12647743488,
+"workspace_backups_count": 35,
+"workspace_backups_size": 41011048,
+"workspace_backups_size_limit": 107374182400,
+"workspace_backups_tasks_failed": 0,
+"workspace_memory_allocated": 0,
+"workspace_memory_allowance": 1610612736,
+"workspace_memory_total": 3221225472,
+"workspace_users_active": 75,
+"workspace_users_modeler": 2,
+"workspace_users_non_modeler": 3,
+"workspace_users_total": 5
+}
+```
 
 ## Метрики в формате Prometheus
 
 Точка доступа **/api/v1/metrics/prometheus** предоставляет метрики в формате [**Prometheus**](https://prometheus.io/docs/instrumenting/exposition_formats/).
 Чтобы получить данные, нужно отправить GET запрос по данному адресу Воркспейса.
 
-Пример метрик в формате Prometheus:  
-![Metrics Prometheus](./assets/metrics_prometheus.png)
+Пример метрик в формате Prometheus ввиде изображений:  
 
+[Пример №1](./assets/metrics_prometheus.png)
+
+Пример метрик в формате Prometheus:  
+
+```plaintxt
+model_26dcabf5dd07007371ce2a649024d03d_id{model_uid="26dcabf5dd07007371ce2a649024d03d",model_uid_26dcabf5dd07007371ce2a649024d03d="uid"} 276
+model_26dcabf5dd07007371ce2a649024d03d_memory{model_uid="26dcabf5dd07007371ce2a649024d03d",model_uid_26dcabf5dd07007371ce2a649024d03d="uid"} 0
+model_26dcabf5dd07007371ce2a649024d03d_serial_global{model_uid="26dcabf5dd07007371ce2a649024d03d",model_uid_26dcabf5dd07007371ce2a649024d03d="uid"} 0
+model_26dcabf5dd07007371ce2a649024d03d_serial_meta{model_uid="26dcabf5dd07007371ce2a649024d03d",model_uid_26dcabf5dd07007371ce2a649024d03d="uid"} 0
+model_26dcabf5dd07007371ce2a649024d03d_status{model_uid="26dcabf5dd07007371ce2a649024d03d",model_uid_26dcabf5dd07007371ce2a649024d03d="uid"} 1
+model_4a3e2db72121ee4695b26de485f9f18a_id{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 239
+model_4a3e2db72121ee4695b26de485f9f18a_memory{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 0
+model_4a3e2db72121ee4695b26de485f9f18a_serial_global{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 13
+model_4a3e2db72121ee4695b26de485f9f18a_serial_meta{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 13
+model_4a3e2db72121ee4695b26de485f9f18a_status{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 1
+model_64971e146afce6246cee6d6aa4dcfa77_id{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 164
+model_64971e146afce6246cee6d6aa4dcfa77_memory{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 0
+model_64971e146afce6246cee6d6aa4dcfa77_serial_global{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 16
+model_64971e146afce6246cee6d6aa4dcfa77_serial_meta{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 16
+model_64971e146afce6246cee6d6aa4dcfa77_status{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 1
+model_f6bc3e886aee01efcae65b81eb177cd6_id{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 198
+model_f6bc3e886aee01efcae65b81eb177cd6_memory{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 0
+model_f6bc3e886aee01efcae65b81eb177cd6_serial_global{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 0
+model_f6bc3e886aee01efcae65b81eb177cd6_serial_meta{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 0
+model_f6bc3e886aee01efcae65b81eb177cd6_status{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 1
+models_counter_offline 0
+models_counter_online 4
+models_counter_total 4
+requests_history_number 0
+requests_history_time_average 0
+requests_history_time_maximum 0
+requests_history_time_median 0
+requests_history_time_minimum 0
+requests_number 1
+system_cpu_load 6
+system_memory_used{memory_type="RAM"} 12821495808
+workspace_backups_count 35
+workspace_backups_size 41011048
+workspace_backups_size_limit 107374182400
+workspace_backups_tasks_failed 0
+workspace_memory_allocated 0
+workspace_memory_allowance 1610612736
+workspace_memory_total 3221225472
+workspace_users_active 75
+workspace_users_modeler 2
+workspace_users_non_modeler 3
+workspace_users_total 5
+```
 ## Детали метрик
 
 ### Системные метрики
@@ -145,6 +235,34 @@
 Данная метрика предоставляет информацию о количестве моделей в статусе **offline** (недоступны для работы).  
 Метрика представлена целым числом.
 
+### Метрики модели
+
+{uid} - это uid вашей модели. Окончательные метрики будут выглядеть по этому примеру - model_b2afe10885611e2c6ece570f82ebf85a_id
+
+#### model_{uid}_id
+
+Данная метрика предоставляет информацию о численном значении id модели по его uid.
+
+#### model_{uid}_name
+
+Данная метрика предоставляет информацию о имени модели по его uid. Данная метрика присутствует в формате JSON и отсутствует в формате Prometheus.
+
+#### model_{uid}_status
+
+Данная метрика предоставляет информацию о статусе модели по его uid. При 1 - модель в онлайне, при 0 - модельв оффлайне.
+
+#### model_{uid}_memory
+
+Данная метрика предоставляет информацию о занятой памяти модели по его uid. 
+
+#### model_{uid}_serial_global
+
+Данная метрика предоставляет информацию о глобальном серийном номере модели по его uid. 
+
+#### model_{uid}_serial_meta
+
+Данная метрика предоставляет информацию о мета серийном номере модели по его uid. 
+
 ### Метрики запросов
 
 #### requests_number
@@ -178,6 +296,95 @@
 Данная метрика предоставляет информацию о **медиане** времени выполнения клиентских запросов, исполнявшихся в воркспейсе в течении последних 5 минут.  
 Метрика представлена числом с плавающей точкой.  
 Медиана является серединой всей выборки времён ответов (см. [Введение в исследование производительности](https://habr.com/ru/companies/yoomoney/articles/433436/)). В идеальной ситуации медиана и среднее равны. Если среднее сильно отличается от медианы, значит некоторые запросы выполнялись слишком медленно или слишком быстро, т.е. отклонялись от среднего значения.
+
+## Методы фильтрации и группировок 
+
+### Группировка по UID модели
+
+Группировка осуществляется только в формате JSON путем добавления параметра groupByTags по такому шаблону:
+
+`api/v1/metrics?groupByTags=model_uid_{uid}`, где {uid} - это uid модели
+
+Пример запроса - `api/v1/metrics?groupByTags=model_uid_1ea0eafdf2b16b1c339b4575933cfc8d`
+
+Пример метрик в формате JSON ввиде изображений:  
+
+[Пример №1](./assets/metrics_by_groupsByTags.png)
+
+Пример метрик в формате JSON:  
+
+```plaintext
+{
+  "model_26dcabf5dd07007371ce2a649024d03d_id": 276,
+  "model_26dcabf5dd07007371ce2a649024d03d_memory": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_name": "subset_filter",
+  "model_26dcabf5dd07007371ce2a649024d03d_serial_global": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_serial_meta": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_status": 1
+}
+{
+  "other_metrics": "some values"
+}
+
+```
+
+### Группировка по моделям
+
+Группировка осуществляется только в формате JSON по запросу `api/v1/metrics?groupByTags=model_uid`
+
+Пример метрик в формате JSON ввиде изображения:  
+
+[Пример №1](./assets/metrics_by_models.png)
+
+Пример метрик в формате JSON:  
+
+```plaintext
+{
+  "model_26dcabf5dd07007371ce2a649024d03d_id": 276,
+  "model_26dcabf5dd07007371ce2a649024d03d_memory": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_name": "subset_filter",
+  "model_26dcabf5dd07007371ce2a649024d03d_serial_global": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_serial_meta": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_status": 1
+},
+{
+  "model_4a3e2db72121ee4695b26de485f9f18a_id": 239,
+  "model_4a3e2db72121ee4695b26de485f9f18a_memory": 0,
+  "model_4a3e2db72121ee4695b26de485f9f18a_name": "subset_filter_3",
+  "model_4a3e2db72121ee4695b26de485f9f18a_serial_global": 13,
+  "model_4a3e2db72121ee4695b26de485f9f18a_serial_meta": 13,
+  "model_4a3e2db72121ee4695b26de485f9f18a_status": 1
+},
+{
+  "other_metrics": "some values"
+}
+
+```
+
+### Фильтрация по uid модели
+
+Фильтрация осуществляется путем добавления параметра model_uid. Она исключает все метрики и оставляет только метрики определенной модели.Примеры:
+
+Пример метрик ввиде изображений:  
+
+[Пример №1](./assets/filter1.png)
+[Пример №2](./assets/filter2.png)
+
+`api/v1/metrics?model_uid=26dcabf5dd07007371ce2a649024d03d`
+
+`api/v1/metrics/prometheus?model_uid=26dcabf5dd07007371ce2a649024d03d`
+
+```plaintext
+{
+  "model_26dcabf5dd07007371ce2a649024d03d_id": 276,
+  "model_26dcabf5dd07007371ce2a649024d03d_memory": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_name": "subset_filter",
+  "model_26dcabf5dd07007371ce2a649024d03d_serial_global": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_serial_meta": 0,
+  "model_26dcabf5dd07007371ce2a649024d03d_status": 1
+},
+```
+
 
 ## Глоссарий
 
