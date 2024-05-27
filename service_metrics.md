@@ -31,7 +31,7 @@
   - [**model_uid_id**](#model_uid_id) - id модели
   - [**model_uid_name**](#model_uid_name) - имя модели
   - [**model_uid_status**](#model_uid_status) - статус модели
-  - [**model_uid_memory**](#model_uid_memory) - затраченная память модели
+  - [**model_uid_memory**](#model_uid_memory) - размер оперативной памяти, занимаемый моделью
   - [**model_uid_serial_global**](#model_uid_serial_global) - глобальный серийный номер модели
   - [**model_uid_serial_meta**](#model_uid_serial_meta) - мета серийный номер модели
 - запросы (requests)
@@ -46,11 +46,6 @@
 
 Точка доступа **/api/v1/metrics** предоставляет метрики в формате [**JSON**](https://habr.com/ru/articles/554274/#json_object).  
 Чтобы получить данные, нужно отправить GET запрос по данному адресу Воркспейса.
-
-Пример метрик в формате JSON ввиде изображений:  
-
-[Пример №1](./assets/metrics_json_2.png)
-[Пример №2](./assets/metrics_json_1.png)
 
 Пример метрик в формате JSON:  
 
@@ -91,10 +86,6 @@
 
 Точка доступа **/api/v1/metrics/prometheus** предоставляет метрики в формате [**Prometheus**](https://prometheus.io/docs/instrumenting/exposition_formats/).
 Чтобы получить данные, нужно отправить GET запрос по данному адресу Воркспейса.
-
-Пример метрик в формате Prometheus ввиде изображений:  
-
-[Пример №1](./assets/metrics_prometheus.png)
 
 Пример метрик в формате Prometheus:  
 
@@ -307,10 +298,6 @@ workspace_users_total 5
 
 Пример запроса - `api/v1/metrics?groupByTags=model_uid_1ea0eafdf2b16b1c339b4575933cfc8d`
 
-Пример метрик в формате JSON ввиде изображений:  
-
-[Пример №1](./assets/metrics_by_groupsByTags.png)
-
 Пример метрик в формате JSON:  
 
 ```plaintext
@@ -363,12 +350,7 @@ workspace_users_total 5
 
 ### Фильтрация по uid модели
 
-Фильтрация осуществляется путем добавления параметра model_uid. Она исключает все метрики и оставляет только метрики определенной модели.Примеры:
-
-Пример метрик ввиде изображений:  
-
-[Пример №1](./assets/filter1.png)
-[Пример №2](./assets/filter2.png)
+Фильтрация осуществляется путем добавления параметра model_uid. Она исключает все метрики и оставляет только метрики определенной модели. Примеры:
 
 `api/v1/metrics?model_uid=26dcabf5dd07007371ce2a649024d03d`
 
