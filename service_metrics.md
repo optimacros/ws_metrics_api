@@ -28,7 +28,7 @@
   - [**models_counter_online**](#models_counter_online) - количество доступных моделей (online)
   - [**models_counter_offline**](#models_counter_offline) - количество недоступных моделей (offline)
 - одиночные модели(model)
-  - [**model_uid_id**](#model_uid_id) - id модели
+  - [**model_uid_id**](#model_uid_id) - идентификатор модели
   - [**model_uid_name**](#model_uid_name) - имя модели
   - [**model_uid_status**](#model_uid_status) - статус модели
   - [**model_uid_memory**](#model_uid_memory) - размер оперативной памяти, занимаемый моделью
@@ -41,6 +41,10 @@
   - [**requests_history_time_maximum**](#requests_history_time_maximum) - максимальное время выполнения запросов
   - [**requests_history_time_average**](#requests_history_time_average) - среднее время выполнения запросов
   - [**requests_history_time_median**](#requests_history_time_median) - медиана времени выполнения запросов
+- методы фильтрации и группировок
+  - [**группировка по UID модели**](#группировка-по-uid-модели)
+  - [**группировка по моделям**](#группировка-по-моделям)
+  - [**фильтрация по uid модели**](#фильтрация-по-uid-модели)
 
 ## Метрики в формате JSON
 
@@ -49,7 +53,7 @@
 
 Пример метрик в формате JSON:  
 
-```plaintext
+```json
 {
 "model_26dcabf5dd07007371ce2a649024d03d_id": 276,
 "model_26dcabf5dd07007371ce2a649024d03d_memory": 0,
@@ -95,21 +99,6 @@ model_26dcabf5dd07007371ce2a649024d03d_memory{model_uid="26dcabf5dd07007371ce2a6
 model_26dcabf5dd07007371ce2a649024d03d_serial_global{model_uid="26dcabf5dd07007371ce2a649024d03d",model_uid_26dcabf5dd07007371ce2a649024d03d="uid"} 0
 model_26dcabf5dd07007371ce2a649024d03d_serial_meta{model_uid="26dcabf5dd07007371ce2a649024d03d",model_uid_26dcabf5dd07007371ce2a649024d03d="uid"} 0
 model_26dcabf5dd07007371ce2a649024d03d_status{model_uid="26dcabf5dd07007371ce2a649024d03d",model_uid_26dcabf5dd07007371ce2a649024d03d="uid"} 1
-model_4a3e2db72121ee4695b26de485f9f18a_id{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 239
-model_4a3e2db72121ee4695b26de485f9f18a_memory{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 0
-model_4a3e2db72121ee4695b26de485f9f18a_serial_global{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 13
-model_4a3e2db72121ee4695b26de485f9f18a_serial_meta{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 13
-model_4a3e2db72121ee4695b26de485f9f18a_status{model_uid="4a3e2db72121ee4695b26de485f9f18a",model_uid_4a3e2db72121ee4695b26de485f9f18a="uid"} 1
-model_64971e146afce6246cee6d6aa4dcfa77_id{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 164
-model_64971e146afce6246cee6d6aa4dcfa77_memory{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 0
-model_64971e146afce6246cee6d6aa4dcfa77_serial_global{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 16
-model_64971e146afce6246cee6d6aa4dcfa77_serial_meta{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 16
-model_64971e146afce6246cee6d6aa4dcfa77_status{model_uid="64971e146afce6246cee6d6aa4dcfa77",model_uid_64971e146afce6246cee6d6aa4dcfa77="uid"} 1
-model_f6bc3e886aee01efcae65b81eb177cd6_id{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 198
-model_f6bc3e886aee01efcae65b81eb177cd6_memory{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 0
-model_f6bc3e886aee01efcae65b81eb177cd6_serial_global{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 0
-model_f6bc3e886aee01efcae65b81eb177cd6_serial_meta{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 0
-model_f6bc3e886aee01efcae65b81eb177cd6_status{model_uid="f6bc3e886aee01efcae65b81eb177cd6",model_uid_f6bc3e886aee01efcae65b81eb177cd6="uid"} 1
 models_counter_offline 0
 models_counter_online 4
 models_counter_total 4
@@ -229,31 +218,31 @@ workspace_users_total 5
 
 ### Метрики модели
 
-{uid} - это uid вашей модели. Окончательные метрики будут выглядеть по этому примеру - model_b2afe10885611e2c6ece570f82ebf85a_id
+{uid} - это `uid` вашей модели. Окончательные метрики будут выглядеть по этому примеру - `model_26dcabf5dd07007371ce2a649024d03d_id`
 
 #### model_{uid}_id
 
-Данная метрика предоставляет информацию о численном значении id модели по его uid.
+Данная метрика предоставляет информацию о численном значении `id` модели по его `uid`.
 
 #### model_{uid}_name
 
-Данная метрика предоставляет информацию о имени модели по его uid. Данная метрика присутствует в формате JSON и отсутствует в формате Prometheus.
+Данная метрика предоставляет информацию о имени модели по его `uid`. Данная метрика присутствует в формате JSON и отсутствует в формате Prometheus.
 
 #### model_{uid}_status
 
-Данная метрика предоставляет информацию о статусе модели по его uid. При 1 - модель в сети, при 0 - модель не в сети.
+Данная метрика предоставляет информацию о статусе модели по его `uid`. При 1 - модель онлайн, при 0 - модель оффлайн.
 
 #### model_{uid}_memory
 
-Данная метрика предоставляет информацию о занятой памяти модели по его uid.
+Данная метрика предоставляет информацию о размерe оперативной памяти, занимаемый моделью по его `uid`.
 
 #### model_{uid}_serial_global
 
-Данная метрика предоставляет информацию о глобальном серийном номере модели по его uid.
+Данная метрика предоставляет информацию о глобальном серийном номере модели по его `uid`.
 
 #### model_{uid}_serial_meta
 
-Данная метрика предоставляет информацию о мета серийном номере модели по его uid.
+Данная метрика предоставляет информацию о мета серийном номере модели по его `uid`. Изменение серийного номера показывает обновления данных или метаданных модели
 
 ### Метрики запросов
 
@@ -293,11 +282,11 @@ workspace_users_total 5
 
 ### Группировка по UID модели
 
-Группировка осуществляется только в формате JSON путем добавления параметра groupByTags по такому шаблону:
+Группировка осуществляется только в формате JSON путем добавления параметра `groupByTags` по такому шаблону:
 
-`api/v1/metrics?groupByTags=model_uid_{uid}`, где {uid} - это uid модели
+`api/v1/metrics?groupByTags=model_uid_{uid}`, где `{uid}` - это `uid` модели
 
-Пример запроса - `api/v1/metrics?groupByTags=model_uid_1ea0eafdf2b16b1c339b4575933cfc8d`
+Пример запроса - `api/v1/metrics?groupByTags=model_uid_26dcabf5dd07007371ce2a649024d03d`. Данный запрос группирует только метрики одной модели по его `uid` - 26dcabf5dd07007371ce2a649024d03d.
 
 Пример метрик в формате JSON:  
 
@@ -309,7 +298,7 @@ workspace_users_total 5
   "model_26dcabf5dd07007371ce2a649024d03d_serial_global": 0,
   "model_26dcabf5dd07007371ce2a649024d03d_serial_meta": 0,
   "model_26dcabf5dd07007371ce2a649024d03d_status": 1
-}
+},
 {
   "other_metrics": "some values"
 }
@@ -318,11 +307,12 @@ workspace_users_total 5
 
 ### Группировка по моделям
 
-Группировка осуществляется только в формате JSON по запросу `api/v1/metrics?groupByTags=model_uid`
+Группировка осуществляется только в формате JSON по запросу `api/v1/metrics?groupByTags=model_uid`. 
+Данный запрос группирует метрики по каждой модели.
 
 Пример метрик в формате JSON:  
 
-```plaintext
+```json
 {
   "model_26dcabf5dd07007371ce2a649024d03d_id": 276,
   "model_26dcabf5dd07007371ce2a649024d03d_memory": 0,
@@ -347,13 +337,13 @@ workspace_users_total 5
 
 ### Фильтрация по uid модели
 
-Фильтрация осуществляется путем добавления параметра model_uid. Она исключает все метрики и оставляет только метрики определенной модели. Примеры:
+Фильтрация осуществляется путем добавления параметра `model_uid`. Она исключает все метрики и оставляет только метрики определенной модели. Данная фильтрация работает в формте JSON и Prometheus. Примеры:
 
 `api/v1/metrics?model_uid=26dcabf5dd07007371ce2a649024d03d`
 
 `api/v1/metrics/prometheus?model_uid=26dcabf5dd07007371ce2a649024d03d`
 
-```plaintext
+```json
 {
   "model_26dcabf5dd07007371ce2a649024d03d_id": 276,
   "model_26dcabf5dd07007371ce2a649024d03d_memory": 0,
@@ -361,7 +351,7 @@ workspace_users_total 5
   "model_26dcabf5dd07007371ce2a649024d03d_serial_global": 0,
   "model_26dcabf5dd07007371ce2a649024d03d_serial_meta": 0,
   "model_26dcabf5dd07007371ce2a649024d03d_status": 1
-},
+}
 ```
 
 ## Глоссарий
